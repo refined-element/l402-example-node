@@ -1,0 +1,28 @@
+{
+  "name": "l402-example-node",
+  "version": "0.1.0",
+  "description": "Reference app: Express + Node + l402-express middleware. Demonstrates Native L402 integration end-to-end.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts",
+    "test": "echo \"Reference app has no tests; the upstream packages do.\" && exit 0"
+  },
+  "dependencies": {
+    "express": "^5.0.0",
+    "l402-express": "^0.1.0",
+    "l402-server": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

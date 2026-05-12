@@ -1,0 +1,32 @@
+# fly.io deployment config — alternative to render.yaml.
+# Deploy with: fly launch --copy-config --no-deploy && fly secrets set LIGHTNING_ENABLE_API_KEY=... && fly deploy
+
+app = "l402-example-node"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "3000"
+  NODE_ENV = "production"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.checks]
+    [http_service.checks.health]
+      grace_period = "10s"
+      interval = "30s"
+      method = "GET"
+      path = "/api/free/health"
+      protocol = "http"
+      timeout = "5s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
